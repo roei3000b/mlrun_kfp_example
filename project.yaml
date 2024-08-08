@@ -1,0 +1,23 @@
+spec:
+  functions:
+  - url: ./pipelines/get_data.py
+    name: get-data
+    kind: job
+    image: mlrun/mlrun
+  - url: ./pipelines/train_model.py
+    name: train-model
+    kind: job
+    image: mlrun/mlrun
+  - url: ./pipelines/deploy_model.py
+    name: deploy-model
+    kind: job
+    image: mlrun/mlrun
+  conda: ''
+  desired_state: online
+  source: ''
+  workflows:
+  - path: pipelines/training_pipeline.py
+    name: train
+metadata:
+  name: iguazio-academy
+kind: project
